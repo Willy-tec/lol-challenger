@@ -1,0 +1,12 @@
+.message {
+  max-width: 720px;
+  margin: auto;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 8px;
+}
