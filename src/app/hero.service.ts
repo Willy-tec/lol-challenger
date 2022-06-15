@@ -1,29 +1,23 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChampionInfo } from './ChampionInfo';
-// import { ChampionList } from './ChampionList';
-import { dragon_champion_url, Free_Champion_Url } from './path';
-// import { Champion } from './Champion';
+
 import { Hero } from './Hero';
+import { PathGeneratorService } from './path-generator.service';
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Access-Control-Request-Headers': '*',
-  //     'X-Riot-Token': 'RGAPI-5d8df3b8-1bf7-4dab-8caa-c0bfeddf4400',
-  //   }),
-  // };
-
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private pathGen: PathGeneratorService
+  ) {}
   getFreeChampionList() {
-    // const url = this.api_url + this.api_path;
-    return this.http.get<ChampionInfo>(Free_Champion_Url);
+    return this.http.get<ChampionInfo>(this.pathGen.getFreeChampionUrl());
   }
   getChampion(id: string) {
-    // return this.http.get<ChampionList>('/assets/champion.json').subscribe(data => data.data);
-    return this.http.get<Hero>(dragon_champion_url(id));
+    return this.http.get<Hero>(this.pathGen.getDetailChampionUrl(id));
   }
 }
+
+// TODO Gestion des erreurs

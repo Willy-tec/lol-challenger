@@ -1,12 +1,9 @@
-<mat-card *ngIf="hero" class="hero-card">
-  <!-- <mat-card-header> -->
-  <img mat-card-avatar src="{{ img_path }}" alt="{{ hero.name }}" />
-  <mat-card-title-group>
+<mat-card *ngIf="hero" class="hero-card mat-elevation-z6">
+  <mat-card-header>
+    <img mat-card-avatar src="{{ img_path }}" alt="{{ hero.name }}" />
     <mat-card-title>{{ hero.name }}</mat-card-title>
     <mat-card-subtitle>{{ hero.title }} </mat-card-subtitle>
-    <img mat-card-sd-image src="{{ passive_icon_path }}" />
-  </mat-card-title-group>
-  <!-- </mat-card-header> -->
+  </mat-card-header>
 
   <mat-card-content>
     <mat-chip-list aria-label="Role identification">
@@ -15,8 +12,25 @@
       </mat-chip>
     </mat-chip-list>
   </mat-card-content>
-  Difficulté : {{ hero.tacticalInfo.difficulty }}
-  <mat-card-content> </mat-card-content>
+  <mat-card-content>
+    <img
+      mat-card-sd-image
+      class="passive_img"
+      src="{{ hero.passive.abilityIconPath }}"
+    />
+    <h3 class="passive_name">{{ hero.passive.name }}</h3>
+    <p class="passive_description" [innerHTML]="hero.passive.description"></p>
+  </mat-card-content>
+
+  <mat-accordion>
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Biographie </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{ hero.shortBio }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <mat-accordion>
     <mat-expansion-panel class="mat-elevation-z0">
       <mat-expansion-panel-header>
@@ -49,12 +63,16 @@
       ></mat-progress-bar>
     </mat-expansion-panel>
   </mat-accordion>
+
   <mat-accordion>
     <mat-expansion-panel class="mat-elevation-z0">
       <mat-expansion-panel-header>
-        <mat-panel-title> Biographie </mat-panel-title>
+        <mat-panel-title> Capacité </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{ hero.shortBio }}</p>
+      <app-capacity-info
+        *ngFor="let spell of hero.spells"
+        [capacity]="spell"
+      ></app-capacity-info>
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>

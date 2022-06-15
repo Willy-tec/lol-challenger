@@ -1,0 +1,9 @@
+<div *ngIf="capacity">
+  <img
+    class="spell_img"
+    src="{{ capacity.abilityIconPath }}"
+    matTooltip="{{ toolTypeInfo }} "
+  />
+  <h3>{{ toolTypeInfo }}</h3>
+  <p [innerHTML]="capacity.description"></p>
+</div>

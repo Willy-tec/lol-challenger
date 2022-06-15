@@ -21,8 +21,8 @@ export interface Hero {
   recommendedItemDefaults: [];
   roles: string[];
   shortBio: string;
-  skins: skin[];
-  spells: spell[];
+  skins: Skin[];
+  spells: Spell[];
   squarePortraitPath: string;
   stingerSfxPath: string;
   tacticalInfo: {
@@ -33,10 +33,11 @@ export interface Hero {
   title: string;
 }
 // TODO complete skin interface
-export interface skin {}
-export interface spell {
+export interface Skin {}
+export interface Spell {
   name: string;
   range: number[];
   spellKey: string;
   abilityIconPath: string;
+  description: string;
 }

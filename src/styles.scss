@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,19 +19,92 @@ $lol-challenger-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$lol-challenger-theme: mat.define-light-theme((
-  color: (
-    primary: $lol-challenger-primary,
-    accent: $lol-challenger-accent,
-    warn: $lol-challenger-warn,
+
+$lol-challenger-typography: mat.define-typography-config(
+  $font-family: "beaufort",
+  $headline:
+    mat.define-typography-level(
+      $font-weight: 900,
+      $font-size: 3em,
+      $letter-spacing: normal,
+    ),
+  $title:
+    mat.define-typography-level(
+      $font-weight: 700,
+      $font-size: 2em,
+    ),
+  $subheading-1:
+    mat.define-typography-level(
+      $font-weight: 700,
+      $font-size: 1.4em,
+    ),
+  $body-1:
+    mat.define-typography-level(
+      $font-weight: 500,
+      $font-size: 1.2em,
+    ),
+  $body-2:
+    mat.define-typography-level(
+      $font-weight: 500,
+      $font-size: 1em,
+    ),
+  $caption:
+    mat.define-typography-level(
+      $font-weight: 700,
+      $font-size: 5em,
+    ),
+  $button:
+    mat.define-typography-level(
+      $font-weight: 700,
+      $font-size: 5em,
+    ),
+  $input:
+    mat.define-typography-level(
+      $font-weight: 700,
+      $font-size: 5em,
+    ),
+);
+
+$lol-challenger-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $lol-challenger-primary,
+      accent: $lol-challenger-accent,
+      warn: $lol-challenger-warn,
+    ),
+    typography: $lol-challenger-typography,
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($lol-challenger-theme);
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "beaufort", Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: "beaufort";
+  src: url("assets/font/BeaufortForLOL-OTF/beaufortforlol-regular.otf")
+    format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "beaufort";
+  src: url("assets/font/BeaufortForLOL-OTF/beaufortforlol-bold.otf")
+    format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "beaufort";
+  src: url("assets/font/BeaufortForLOL-OTF/beaufortforlol-light.otf")
+    format("opentype");
+  font-weight: 300;
+}

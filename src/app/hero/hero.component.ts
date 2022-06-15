@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hero } from '../Hero';
 import { HeroService } from '../hero.service';
-import { champion_icon_url, passive_icon_url } from '../path';
+// import { champion_icon_url, passive_icon_url } from '../path';
+import { PathGeneratorService } from '../path-generator.service';
 
 @Component({
   selector: 'app-hero',
@@ -13,7 +14,10 @@ export class HeroComponent implements OnInit {
   hero?: Hero;
   img_path: string = '';
   passive_icon_path: string = '';
-  constructor(private heroService: HeroService) {
+  constructor(
+    private heroService: HeroService,
+    private pathGen: PathGeneratorService
+  ) {
     this.id = '';
   }
   ngOnInit(): void {
@@ -21,18 +25,17 @@ export class HeroComponent implements OnInit {
   }
   getHero(id: string) {
     this.heroService.getChampion(id).subscribe((champ) => {
-      console.log(champ);
-      this.hero = champ;
-      this.img_path = champion_icon_url(id);
-      let test =
-        champ.passive.abilityIconPath
-          .split('/')
-          .slice(5)
-          .map((name) => name.toLowerCase())
-          .join('/') || '';
-      console.log(test);
-      this.passive_icon_path = passive_icon_url(test);
+      this.hero = this.formatPath(champ);
+      this.img_path = this.pathGen.getAvatarUrl(id);
     });
   }
-  formatPathForIcon() {}
+  formatPath(champ: Hero): Hero {
+    champ.passive.abilityIconPath = this.pathGen.getSpellUrl(
+      champ.passive.abilityIconPath
+    );
+    champ.spells.forEach((cell) => {
+      cell.abilityIconPath = this.pathGen.getSpellUrl(cell.abilityIconPath);
+    });
+    return champ;
+  }
 }
