@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChampionInfo } from './ChampionInfo';
-import { ChampionList } from './ChampionList';
+// import { ChampionList } from './ChampionList';
 import { dragon_champion_url, Free_Champion_Url } from './path';
-import { Champion } from './Champion';
+// import { Champion } from './Champion';
+import { Hero } from './Hero';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,6 +24,6 @@ export class HeroService {
   }
   getChampion(id: string) {
     // return this.http.get<ChampionList>('/assets/champion.json').subscribe(data => data.data);
-    return this.http.get<ChampionList>(dragon_champion_url(id));
+    return this.http.get<Hero>(dragon_champion_url(id));
   }
 }
