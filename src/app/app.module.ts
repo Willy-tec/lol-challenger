@@ -14,7 +14,6 @@ import { HeroComponent } from './hero/hero.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageComponent } from './message/message.component';
 import { CapacityInfoComponent } from './capacity-info/capacity-info.component';
-import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,6 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressBarModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
