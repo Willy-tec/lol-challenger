@@ -33,8 +33,8 @@ export class HeroComponent implements OnInit {
     champ.passive.abilityIconPath = this.pathGen.getSpellUrl(
       champ.passive.abilityIconPath
     );
-    champ.spells.forEach((cell) => {
-      cell.abilityIconPath = this.pathGen.getSpellUrl(cell.abilityIconPath);
+    champ.spells.forEach((spell) => {
+      spell.abilityIconPath = this.pathGen.getSpellUrl(spell.abilityIconPath);
     });
     return champ;
   }

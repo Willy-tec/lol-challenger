@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class PathGeneratorService {
   riot_base = 'https://euw1.api.riotgames.com';
   riot_freechamp = '/lol/platform/v3/champion-rotations';
-  riot_api = '?api_key=RGAPI-5d8df3b8-1bf7-4dab-8caa-c0bfeddf4400';
+  riot_api = '?api_key=RGAPI-266a0392-ce37-4aaa-9967-e7452cc2053e';
   rdragon_base_url =
     'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/';
   champ_path = 'fr_fr/v1/champions/';
