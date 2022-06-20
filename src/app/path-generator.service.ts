@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class PathGeneratorService {
   riot_base = 'https://euw1.api.riotgames.com';
   riot_freechamp = '/lol/platform/v3/champion-rotations';
-  riot_api = '?api_key=RGAPI-266a0392-ce37-4aaa-9967-e7452cc2053e';
+  riot_api = '?api_key=RGAPI-8bcf56f9-d48b-410d-9f0f-801f35755247';
   rdragon_base_url =
     'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/';
   champ_path = 'fr_fr/v1/champions/';
@@ -29,3 +29,5 @@ export class PathGeneratorService {
     return this.rdragon_base_url + this.spell_path + path;
   }
 }
+
+// TODO Replace strange function by URL Object and method
